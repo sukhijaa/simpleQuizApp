@@ -5,7 +5,7 @@ const defaultProps = {
     userAnswers: []
 };
 
-export default (state = defaultProps, action = {}) => {
+export const QuizQuestionsReducer = (state = defaultProps, action = {}) => {
     switch(action.type) {
         case quizQuestionActionTypes.UPDATE_QUESTIONS: {
             return {...state, quizQuestions: action.payload}

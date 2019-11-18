@@ -1,0 +1,7 @@
+.quiz-single-question {
+  display: flex;
+  align-items: center;
+  .question-statement-answers-wrapper {
+    flex-grow: 100;
+  }
+}

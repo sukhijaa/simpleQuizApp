@@ -11,7 +11,7 @@ export default class QuestionAnswer extends React.Component {
     render() {
 
         return (
-            <div>My Test Question</div>
+            <div className={'question-statement-answers-wrapper'}>My Test Question</div>
         );
 
     }

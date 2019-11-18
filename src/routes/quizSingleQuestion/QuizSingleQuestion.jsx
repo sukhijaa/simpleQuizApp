@@ -1,10 +1,11 @@
 import React from 'react';
 import {QuizAppWrapper} from "../quizAppWrapper/QuizAppWrapper";
-import QuestionAnswer from "../../components/QuestionAnswer";
+import QuestionAnswer from "../../components/QuestionAnswer.jsx";
 import {MaterialUIWithStylesHOC} from "../../utility/MaterialUIWithStylesHOC.jsx";
 import {questionChangeButtons} from "../../utility/MaterialUIStyles.js";
 import Fab from '@material-ui/core/Fab';
-
+import './QuizSingleQuestion.scss';
+import {Link} from 'react-router-dom';
 
 
 @QuizAppWrapper
@@ -22,13 +23,17 @@ export default class QuizSingleQuestion extends React.Component {
 
         return (
             <div className={'quiz-single-question'}>
-                <Fab color="secondary" aria-label="add" className={classes.button}>
-                    {"<"}
-                </Fab>
+                <Link to={'/welcome'}>
+                    <Fab color="secondary" aria-label="add" className={classes.button}>
+                        {"<"}
+                    </Fab>
+                </Link>
                 <QuestionAnswer/>
-                <Fab color="secondary" aria-label="add" className={classes.button}>
-                    >
-                </Fab>
+                <Link to={'/result'}>
+                    <Fab color="secondary" aria-label="add" className={classes.button}>
+                        >
+                    </Fab>
+                </Link>
             </div>
         );
 

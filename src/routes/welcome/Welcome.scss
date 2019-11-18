@@ -1,0 +1,16 @@
+.quiz-welcome-app-wrapper {
+  padding: 25px 5px;
+  .welcome-header {
+    font-size: 30px;
+    font-family: Consolas;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .welcome-start-button {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

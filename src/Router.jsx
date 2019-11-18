@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import TestItem from "./routes/testItem/TestItem";
-import LudoDice from "./routes/LudoDice/LudoDice";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Welcome from "./routes/welcome/Welcome";
+import QuizSingleQuestion from "./routes/quizSingleQuestion/QuizSingleQuestion";
+import QuizResult from "./routes/quizResult/QuizResult";
 
 export default class Router extends React.Component {
     render() {
@@ -9,9 +10,10 @@ export default class Router extends React.Component {
             <div className={''}>
                 <BrowserRouter>
                     <Switch>
-                        <Route path={'/testItem'} component={TestItem}/>
-                        <Route path={'/dice'} component={LudoDice}/>
-                        <Route component={TestItem}/>
+                        <Route path={'/result'} component={QuizResult}/>
+                        <Route path={'/quiz'} component={QuizSingleQuestion}/>
+                        <Route path={'/welcome'} component={Welcome}/>
+                        <Route component={Welcome}/>
                     </Switch>
                 </BrowserRouter>
             </div>

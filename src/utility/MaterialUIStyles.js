@@ -20,4 +20,8 @@ export const questionChangeButtons = theme => ({
 		color: 'black',
 		width: '50px',
 	},
+	submitButton: {
+		margin: theme.spacing(1),
+		backgroundColor: 'green',
+	},
 });

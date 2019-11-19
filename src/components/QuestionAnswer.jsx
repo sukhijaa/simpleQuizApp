@@ -7,7 +7,8 @@ export default class QuestionAnswer extends React.Component {
 		questionStatement: PropTypes.string,
 		answers: PropTypes.array,
 		correctAnswer: PropTypes.number,
-		updateSelectedAnswwer: PropTypes.func
+		updateSelectedAnswwer: PropTypes.func,
+		questionCount: PropTypes.number,
 	};
 
 	static defaultProps = {
@@ -15,20 +16,27 @@ export default class QuestionAnswer extends React.Component {
 		answers: [],
 		correctAnswer: 0,
 		updateSelectedAnswwer: () => {
-		}
+		},
+		questionCount: 0,
 	};
 
     state = {};
 
     render() {
 
-	    const {questionStatement, answers} = this.props;
+	    const {questionStatement, answers, questionCount, correctAnswer} = this.props;
 
     	return (
 		    <div className='question-statement-answers-wrapper'>
-			    <div className={'question-statement'}>{questionStatement}</div>
-			    <div className={'question-answers-wrapper'}>
-				    {answers.map(str => str)}
+			    <div className={'question-counter'}>{questionCount}</div>
+			    <div className='question-statement'>{questionStatement}</div>
+			    <div className='question-answers-wrapper'>
+				    {answers.map(str => {
+					    return (
+						    <div>{str}</div>
+					    );
+				    })}
+				    {'Correct Answer : ' + correctAnswer}
 			    </div>
 		    </div>
     	);

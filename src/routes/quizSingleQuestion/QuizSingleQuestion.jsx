@@ -3,14 +3,13 @@ import {QuizAppWrapper} from '../quizAppWrapper/QuizAppWrapper';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer.jsx';
 import {MaterialUIWithStylesHOC} from '../../utility/MaterialUIWithStylesHOC.jsx';
 import {questionChangeButtons} from '../../utility/MaterialUIStyles.js';
-import Fab from '@material-ui/core/Fab';
 import './QuizSingleQuestion.scss';
 import {connect} from 'react-redux';
 import {getCurrentQuestion, getQuizQuestions, getUserAnswers} from '../../reducers/StoreSelectors';
 import PropTypes from 'prop-types';
-import {endTheGame, updateCurrentQuestion} from '../../actions/UIProperties.actions';
-import Button from '@material-ui/core/Button';
+import {endTheGame, resetTheGame, updateCurrentQuestion} from '../../actions/UIProperties.actions';
 import {updateAnswer} from '../../actions/QuizQuestions.actions';
+import QuizActionFooter from './QuizActionFooter';
 
 
 @QuizAppWrapper
@@ -58,13 +57,15 @@ export default class QuizSingleQuestion extends React.Component {
 		this.props.history.goForward();
 	};
 
+	handleQuizRestart = () => {
+		this.props.dispatch(resetTheGame());
+		this.props.history.push('/');
+		this.props.history.goForward();
+	}
+
 	render() {
 
 	    const {classes, currentQuestion, allQuestions, userResponses} = this.props;
-
-	    const isFirstQuestion = currentQuestion === 0;
-	    const isLastQuestion = currentQuestion === allQuestions.length - 1;
-
 	    const questionObj = allQuestions[currentQuestion] || {};
 
     	return (
@@ -78,36 +79,14 @@ export default class QuizSingleQuestion extends React.Component {
 				    selectedOption={userResponses[currentQuestion]}
 				    questionCount={currentQuestion + 1}/>
 			    <div className='quiz-controls-footer'>
-				    <div className='navigation-button back-navigation'>
-					    {
-						    isFirstQuestion ? null :
-							    <Fab
-								    color='secondary' aria-label='add'
-								    className={classes.button}
-								    onClick={this.moveToPreviousQuestion}>
-								    {'<'}
-							    </Fab>
-					    }
-				    </div>
-				    <div className='quiz-question-submit-quiz'>
-					    <Button
-						    variant='contained'
-						    color='secondary'
-						    onClick={this.handleQuizSubmit}
-						    className={classes.submitButton}>
-						    Submit
-					    </Button>
-				    </div>
-				    <div className='navigation-button forward-navigation'>
-					    {
-						    isLastQuestion ? null :
-							    <Fab color='secondary' aria-label='add'
-							         className={classes.button}
-							         onClick={this.moveToNextQuestion}>
-								    {'>'}
-							    </Fab>
-					    }
-				    </div>
+				    <QuizActionFooter
+					    currentQuestion={currentQuestion}
+					    allQuestions={allQuestions}
+					    classes={classes}
+					    handleQuizRestart={this.handleQuizRestart}
+					    handleQuizSubmit={this.handleQuizSubmit}
+					    moveToNextQuestion={this.moveToNextQuestion}
+					    moveToPreviousQuestion={this.moveToPreviousQuestion}/>
 			    </div>
     		</div>
 

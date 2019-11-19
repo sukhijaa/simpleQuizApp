@@ -21,11 +21,15 @@ export const questionChangeButtons = theme => ({
 		width: '50px',
 		'&:hover': {
 			backgroundColor: 'green',
-			color: 'white'
-		}
+			color: 'white',
+		},
 	},
 	submitButton: {
 		margin: theme.spacing(1),
 		backgroundColor: 'green',
+	},
+	restartButton: {
+		margin: theme.spacing(1),
+		backgroundColor: 'red',
 	},
 });

@@ -8,7 +8,8 @@ const defaultState = {
 
 export const UIPropsReducer = (state = defaultState, action = {}) => {
 	switch (action.type) {
-		case uiPropertiesActionTypes.START_THE_GAME: {
+		case uiPropertiesActionTypes.START_THE_GAME:
+		case uiPropertiesActionTypes.RESET_THE_GAME: {
 			return {...defaultState, gameStarted: true};
 		}
 		case uiPropertiesActionTypes.UPDATE_CURRENT_QUESTION: {

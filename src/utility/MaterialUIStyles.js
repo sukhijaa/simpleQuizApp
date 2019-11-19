@@ -7,6 +7,9 @@ export const successButtonStyles = theme => ({
 	input: {
 		display: 'none',
 	},
+	textField: {
+		margin: theme.spacing(1),
+	},
 });
 
 export const questionChangeButtons = theme => ({

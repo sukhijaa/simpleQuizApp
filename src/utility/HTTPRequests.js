@@ -3,7 +3,7 @@ import axios from 'axios';
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 export const APIEndpoints = {
-
+	GET_QUIZ_QUESTIONS: 'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean'
 };
 
 export const buildURL = (path, pathParams = {}, queryParams = {}) => {
@@ -24,10 +24,7 @@ export const buildURL = (path, pathParams = {}, queryParams = {}) => {
 	return path;
 };
 
-const appendHost = (url) => {
-	// Path of your local server
-	return isDevelopment ? 'http://localhost:5000' + url : url;
-};
+const appendHost = url => url
 
 export const HTTP = {
 	DELETE: (url) => {

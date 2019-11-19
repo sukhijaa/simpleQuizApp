@@ -1,11 +1,19 @@
 .quiz-welcome-app-wrapper {
   padding: 25px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   .welcome-header {
     font-size: 30px;
     font-family: Consolas;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .welcome-username-field {
+    width: 400px;
+    margin: 30px 0;
   }
   .welcome-start-button {
     height: 80px;

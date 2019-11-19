@@ -1,3 +1,3 @@
 export const userDetailsActionTypes = {
-    UPDATE_NAME: 'updateName'
-}
+	UPDATE_NAME: 'updateName',
+};

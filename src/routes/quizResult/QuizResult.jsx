@@ -1,5 +1,5 @@
 import React from 'react';
-import {QuizAppWrapper} from "../quizAppWrapper/QuizAppWrapper";
+import {QuizAppWrapper} from '../quizAppWrapper/QuizAppWrapper';
 
 
 @QuizAppWrapper
@@ -12,11 +12,11 @@ export default class  extends React.Component {
 
     render() {
 
-        return (
-            <div>
+    	return (
+    		<div>
                 Quiz Result
-            </div>
-        );
+    		</div>
+    	);
 
     }
 }

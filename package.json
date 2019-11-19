@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development",
-    "prod": "webpack --mode production"
+    "prod": "webpack --mode production",
+    "lint-js:fix": "eslint --ext=js --ext=jsx --fix src/"
   },
   "author": "",
   "license": "ISC",

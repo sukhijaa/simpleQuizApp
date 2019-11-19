@@ -5,7 +5,12 @@ import {MaterialUIWithStylesHOC} from '../../utility/MaterialUIWithStylesHOC.jsx
 import {questionChangeButtons} from '../../utility/MaterialUIStyles.js';
 import './QuizSingleQuestion.scss';
 import {connect} from 'react-redux';
-import {getCurrentQuestion, getQuizQuestions, getUserAnswers} from '../../reducers/StoreSelectors';
+import {
+	getCurrentQuestion,
+	getGameSubmissionStatus,
+	getQuizQuestions,
+	getUserAnswers
+} from '../../reducers/StoreSelectors';
 import PropTypes from 'prop-types';
 import {endTheGame, resetTheGame, updateCurrentQuestion} from '../../actions/UIProperties.actions';
 import {updateAnswer} from '../../actions/QuizQuestions.actions';
@@ -18,6 +23,7 @@ import QuizActionFooter from './QuizActionFooter';
 	currentQuestion: getCurrentQuestion(store),
 	allQuestions: getQuizQuestions(store),
 	userResponses: getUserAnswers(store),
+	quizSubmitted: getGameSubmissionStatus(store)
 }))
 export default class QuizSingleQuestion extends React.Component {
 	static propTypes = {
@@ -25,6 +31,7 @@ export default class QuizSingleQuestion extends React.Component {
 		currentQuestion: PropTypes.number,
 		allQuestions: PropTypes.array,
 		userResponses: PropTypes.object,
+		quizSubmitted: PropTypes.bool
 	};
 
 	static defaultProps = {
@@ -32,6 +39,7 @@ export default class QuizSingleQuestion extends React.Component {
 		currentQuestion: 0,
 		allQuestions: [],
 		userResponses: {},
+		quizSubmitted: false
 	};
 
     state = {};
@@ -65,7 +73,7 @@ export default class QuizSingleQuestion extends React.Component {
 
 	render() {
 
-	    const {classes, currentQuestion, allQuestions, userResponses} = this.props;
+		const {classes, currentQuestion, allQuestions, userResponses, quizSubmitted} = this.props;
 	    const questionObj = allQuestions[currentQuestion] || {};
 
     	return (
@@ -77,12 +85,14 @@ export default class QuizSingleQuestion extends React.Component {
 				    questionCategory={questionObj.category}
 				    updateSelectedAnswwer={this.updateUserResponse}
 				    selectedOption={userResponses[currentQuestion]}
+				    showResult={quizSubmitted}
 				    questionCount={currentQuestion + 1}/>
 			    <div className='quiz-controls-footer'>
 				    <QuizActionFooter
 					    currentQuestion={currentQuestion}
 					    allQuestions={allQuestions}
 					    classes={classes}
+					    canSubmit={!quizSubmitted}
 					    handleQuizRestart={this.handleQuizRestart}
 					    handleQuizSubmit={this.handleQuizSubmit}
 					    moveToNextQuestion={this.moveToNextQuestion}

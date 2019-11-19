@@ -7,7 +7,7 @@ export default function QuizActionFooter(props) {
 
 	const {
 		currentQuestion, allQuestions, classes, moveToPreviousQuestion,
-		handleQuizRestart, handleQuizSubmit, moveToNextQuestion
+		handleQuizRestart, handleQuizSubmit, moveToNextQuestion, canSubmit
 	} = props;
 
 	const isFirstQuestion = currentQuestion === 0;
@@ -34,13 +34,16 @@ export default function QuizActionFooter(props) {
 					className={classes.restartButton}>
 					Restart
 				</Button>
-				<Button
-					variant='contained'
-					color='secondary'
-					onClick={handleQuizSubmit}
-					className={classes.submitButton}>
-					Submit
-				</Button>
+				{
+					canSubmit ?
+						<Button
+							variant='contained'
+							color='secondary'
+							onClick={handleQuizSubmit}
+							className={classes.submitButton}>
+							Submit
+						</Button> : null
+				}
 			</div>
 			<div className='navigation-button forward-navigation'>
 				{
@@ -64,4 +67,5 @@ QuizActionFooter.propTypes = {
 	moveToNextQuestion: PropTypes.func,
 	handleQuizSubmit: PropTypes.func,
 	handleQuizRestart: PropTypes.func,
+	canSubmit: PropTypes.bool
 };

@@ -16,7 +16,7 @@ export const UIPropsReducer = (state = defaultState, action = {}) => {
 			return {...state, currentQuestion: action.payload};
 		}
 		case uiPropertiesActionTypes.END_THE_GAME: {
-			return {...state, gameSubmitted: true};
+			return {...state, gameSubmitted: true, currentQuestion: 0};
 		}
 		default: return {...state};
 

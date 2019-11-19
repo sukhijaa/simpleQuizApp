@@ -15,17 +15,6 @@ export default function QuizActionFooter(props) {
 
 	return (
 		<React.Fragment>
-			<div className='navigation-button back-navigation'>
-				{
-					isFirstQuestion ? null :
-						<Fab
-							color='secondary' aria-label='add'
-							className={classes.button}
-							onClick={moveToPreviousQuestion}>
-							{'<'}
-						</Fab>
-				}
-			</div>
 			<div className='quiz-question-submit-quiz'>
 				<Button
 					variant='contained'
@@ -34,6 +23,27 @@ export default function QuizActionFooter(props) {
 					className={classes.restartButton}>
 					Restart
 				</Button>
+			</div>
+			<div className='navigation-buttons'>
+				{
+					isFirstQuestion ? null :
+						<Fab
+							color='secondary' aria-label='add'
+							className={classes.button}
+							onClick={moveToPreviousQuestion}>
+							{'Prev'}
+						</Fab>
+				}
+				{
+					isLastQuestion ? null :
+						<Fab color='secondary' aria-label='add'
+						     className={classes.button}
+						     onClick={moveToNextQuestion}>
+							{'Next'}
+						</Fab>
+				}
+			</div>
+			<div className='quiz-question-submit-quiz submit-button'>
 				{
 					canSubmit ?
 						<Button
@@ -43,16 +53,6 @@ export default function QuizActionFooter(props) {
 							className={classes.submitButton}>
 							Submit
 						</Button> : null
-				}
-			</div>
-			<div className='navigation-button forward-navigation'>
-				{
-					isLastQuestion ? null :
-						<Fab color='secondary' aria-label='add'
-						     className={classes.button}
-						     onClick={moveToNextQuestion}>
-							{'>'}
-						</Fab>
 				}
 			</div>
 		</React.Fragment>

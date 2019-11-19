@@ -12,7 +12,8 @@
     justify-content: center;
   }
   .welcome-username-field {
-    width: 400px;
+    display: flex;
+    justify-content: center;
     margin: 30px 0;
   }
   .welcome-start-button {

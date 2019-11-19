@@ -18,7 +18,6 @@ export const questionChangeButtons = theme => ({
 		border: '1px solid black',
 		backgroundColor: 'white',
 		color: 'black',
-		width: '50px',
 		'&:hover': {
 			backgroundColor: 'green',
 			color: 'white',

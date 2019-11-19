@@ -24,16 +24,27 @@ A step by step series of examples that tell you how to get a development env run
 #### Setting the system up
 Assumes that you have installed all the tools mentioned above 
 
-##### UI (for Development only)
+#### Get local copy of the project
 ```
-1. Open command prompt in root folder
+1. Navigate to the folder you want to download the project into
+2. Open Git Bash or Command Prompt
+3. Run Below Command
+    $ git clone https://github.com/sukhijaa/simpleQuizApp.git
+4. A new folder named : "simpleQuizApp" will be created with project source code inside
+```
+
+##### Running UI (for Development only)
+```
+1. Open command prompt in root folder i.e. navigate to simpleQuizApp directory
 2. Run "$ npm install" to install all the dependencies.
 3. Run "$ npm run dev" to start hot development env on port 8000
 4. Run "$ npm run prod" to create bundled JS and CSS file for production environment
 ```
 
 You are now all set to use the application.
-In your browser, go to localhost:8000 and you shall see your Quiz App
+Default browser should open automatically when your build passes.
+<br/>
+Otherwise, in your browser, go to localhost:8000 and you shall see your Quiz App
 
 
 ### Coding style tests

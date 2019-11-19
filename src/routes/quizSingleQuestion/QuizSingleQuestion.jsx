@@ -1,6 +1,6 @@
 import React from 'react';
 import {QuizAppWrapper} from '../quizAppWrapper/QuizAppWrapper';
-import QuestionAnswer from '../../components/QuestionAnswer.jsx';
+import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer.jsx';
 import {MaterialUIWithStylesHOC} from '../../utility/MaterialUIWithStylesHOC.jsx';
 import {questionChangeButtons} from '../../utility/MaterialUIStyles.js';
 import Fab from '@material-ui/core/Fab';
@@ -67,39 +67,47 @@ export default class QuizSingleQuestion extends React.Component {
 
     	return (
     		<div className='quiz-single-question'>
-			    {
-				    isFirstQuestion ? null :
-					    <Fab
-						    color='secondary' aria-label='add'
-						    className={classes.button}
-						    onClick={this.moveToPreviousQuestion}>
-						    {'<'}
-					    </Fab>
-			    }
 			    <QuestionAnswer
 				    questionStatement={questionObj.question}
 				    correctAnswer={questionObj.correctAnswer}
 				    answers={questionObj.allAnswers}
+				    questionCategory={questionObj.category}
 				    questionCount={currentQuestion + 1}/>
-			    <div className={'quiz-question-submit-quiz'}>
-				    <Button
-					    variant='contained'
-					    color='secondary'
-					    onClick={this.handleQuizSubmit}
-					    className={classes.submitButton}>
-					    Submit
-				    </Button>
+			    <div className={'quiz-controls-footer'}>
+				    <div className={'navigation-button back-navigation'}>
+					    {
+						    isFirstQuestion ? null :
+							    <Fab
+								    color='secondary' aria-label='add'
+								    className={classes.button}
+								    onClick={this.moveToPreviousQuestion}>
+								    {'<'}
+							    </Fab>
+					    }
+				    </div>
+				    <div className={'quiz-question-submit-quiz'}>
+					    <Button
+						    variant='contained'
+						    color='secondary'
+						    onClick={this.handleQuizSubmit}
+						    className={classes.submitButton}>
+						    Submit
+					    </Button>
+				    </div>
+				    <div className={'navigation-button forward-navigation'}>
+					    {
+						    isLastQuestion ? null :
+							    <Fab color='secondary' aria-label='add'
+							         className={classes.button}
+							         onClick={this.moveToNextQuestion}>
+								    {'>'}
+							    </Fab>
+					    }
+				    </div>
 			    </div>
-			    {
-				    isLastQuestion ? null :
-					    <Fab color='secondary' aria-label='add'
-					         className={classes.button}
-					         onClick={this.moveToNextQuestion}>
-						    {'>'}
-					    </Fab>
-			    }
     		</div>
-    	);
+
+	    );
 
     }
 }

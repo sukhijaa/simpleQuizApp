@@ -1,7 +1,26 @@
 .quiz-single-question {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  padding: 20px;
+  width: 100%;
   .question-statement-answers-wrapper {
     flex-grow: 100;
+  }
+
+  .quiz-controls-footer {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .navigation-button {
+      flex-grow: 100;
+    }
+
+    .forward-navigation {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 }

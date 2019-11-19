@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './QuestionAnswer.scss';
 
 
 export default class QuestionAnswer extends React.Component {
@@ -9,6 +10,7 @@ export default class QuestionAnswer extends React.Component {
 		correctAnswer: PropTypes.number,
 		updateSelectedAnswwer: PropTypes.func,
 		questionCount: PropTypes.number,
+		questionCategory: PropTypes.string,
 	};
 
 	static defaultProps = {
@@ -18,25 +20,28 @@ export default class QuestionAnswer extends React.Component {
 		updateSelectedAnswwer: () => {
 		},
 		questionCount: 0,
+		questionCategory: ''
 	};
 
     state = {};
 
     render() {
 
-	    const {questionStatement, answers, questionCount, correctAnswer} = this.props;
+	    const {questionStatement, answers, questionCount, correctAnswer, questionCategory} = this.props;
 
     	return (
 		    <div className='question-statement-answers-wrapper'>
-			    <div className={'question-counter'}>{questionCount}</div>
+			    <div className={'question-counter'}>
+				    <div className={'question-label'}>{`Q. ${questionCount}`}</div>
+				    <div className={'question-category'}>{`Category: ${questionCategory}`}</div>
+			    </div>
 			    <div className='question-statement'>{questionStatement}</div>
 			    <div className='question-answers-wrapper'>
 				    {answers.map(str => {
 					    return (
-						    <div>{str}</div>
+						    <div className={'answer-single-option'}>{str}</div>
 					    );
 				    })}
-				    {'Correct Answer : ' + correctAnswer}
 			    </div>
 		    </div>
     	);

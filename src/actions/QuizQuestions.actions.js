@@ -14,3 +14,8 @@ export const resetQuestions = (allQues) => {
 	};
 };
 
+export const updateAnswer = (questionIndex, markedAnswer) => ({
+	type: quizQuestionActionTypes.UPDATE_ANSWER,
+	payload: {questionIndex, markedAnswer}
+});
+

@@ -40,5 +40,13 @@
 		cursor: pointer;
 	  }
 	}
+
+	.selected-option {
+	  box-shadow: 0 0 5px orange;
+
+	  &:hover {
+		box-shadow: 0 0 5px orange;
+	  }
+	}
   }
 }

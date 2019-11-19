@@ -9,7 +9,8 @@ import {connect} from 'react-redux';
 import {getCurrentQuestion, getQuizQuestions, getUserAnswers} from '../../reducers/StoreSelectors';
 import PropTypes from 'prop-types';
 import {endTheGame, updateCurrentQuestion} from '../../actions/UIProperties.actions';
-import Button from "@material-ui/core/Button";
+import Button from '@material-ui/core/Button';
+import {updateAnswer} from '../../actions/QuizQuestions.actions';
 
 
 @QuizAppWrapper
@@ -31,7 +32,7 @@ export default class QuizSingleQuestion extends React.Component {
 		classes: {},
 		currentQuestion: 0,
 		allQuestions: [],
-		userResponses: [],
+		userResponses: {},
 	};
 
     state = {};
@@ -46,8 +47,9 @@ export default class QuizSingleQuestion extends React.Component {
 		this.props.dispatch(updateCurrentQuestion(currentQuestion + 1));
 	};
 
-	updateUserResponse = () => {
-
+	updateUserResponse = (selectedIndex) => {
+		const {currentQuestion} = this.props;
+		this.props.dispatch(updateAnswer(currentQuestion, selectedIndex));
 	};
 
 	handleQuizSubmit = () => {
@@ -56,7 +58,7 @@ export default class QuizSingleQuestion extends React.Component {
 		this.props.history.goForward();
 	};
 
-    render() {
+	render() {
 
 	    const {classes, currentQuestion, allQuestions, userResponses} = this.props;
 
@@ -72,9 +74,11 @@ export default class QuizSingleQuestion extends React.Component {
 				    correctAnswer={questionObj.correctAnswer}
 				    answers={questionObj.allAnswers}
 				    questionCategory={questionObj.category}
+				    updateSelectedAnswwer={this.updateUserResponse}
+				    selectedOption={userResponses[currentQuestion]}
 				    questionCount={currentQuestion + 1}/>
-			    <div className={'quiz-controls-footer'}>
-				    <div className={'navigation-button back-navigation'}>
+			    <div className='quiz-controls-footer'>
+				    <div className='navigation-button back-navigation'>
 					    {
 						    isFirstQuestion ? null :
 							    <Fab
@@ -85,7 +89,7 @@ export default class QuizSingleQuestion extends React.Component {
 							    </Fab>
 					    }
 				    </div>
-				    <div className={'quiz-question-submit-quiz'}>
+				    <div className='quiz-question-submit-quiz'>
 					    <Button
 						    variant='contained'
 						    color='secondary'
@@ -94,7 +98,7 @@ export default class QuizSingleQuestion extends React.Component {
 						    Submit
 					    </Button>
 				    </div>
-				    <div className={'navigation-button forward-navigation'}>
+				    <div className='navigation-button forward-navigation'>
 					    {
 						    isLastQuestion ? null :
 							    <Fab color='secondary' aria-label='add'
@@ -109,5 +113,5 @@ export default class QuizSingleQuestion extends React.Component {
 
 	    );
 
-    }
+	}
 }

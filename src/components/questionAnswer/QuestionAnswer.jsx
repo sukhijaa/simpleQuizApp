@@ -11,6 +11,7 @@ export default class QuestionAnswer extends React.Component {
 		updateSelectedAnswwer: PropTypes.func,
 		questionCount: PropTypes.number,
 		questionCategory: PropTypes.string,
+		selectedOption: PropTypes.number
 	};
 
 	static defaultProps = {
@@ -20,14 +21,15 @@ export default class QuestionAnswer extends React.Component {
 		updateSelectedAnswwer: () => {
 		},
 		questionCount: 0,
-		questionCategory: ''
+		questionCategory: '',
+		selectedOption: undefined
 	};
 
     state = {};
 
     render() {
 
-	    const {questionStatement, answers, questionCount, correctAnswer, questionCategory} = this.props;
+	    const {questionStatement, answers, questionCount, correctAnswer, questionCategory, selectedOption, updateSelectedAnswwer} = this.props;
 
     	return (
 		    <div className='question-statement-answers-wrapper'>
@@ -37,9 +39,15 @@ export default class QuestionAnswer extends React.Component {
 			    </div>
 			    <div className='question-statement'>{questionStatement}</div>
 			    <div className='question-answers-wrapper'>
-				    {answers.map(str => {
+				    {answers.map((str, index) => {
+					    const isSelected = selectedOption === index;
 					    return (
-						    <div className={'answer-single-option'}>{str}</div>
+						    <div
+							    key={index}
+							    className={`answer-single-option ${isSelected ? ' selected-option' : ''}`}
+							    onClick={() => updateSelectedAnswwer(index)}>
+							    {str}
+						    </div>
 					    );
 				    })}
 			    </div>

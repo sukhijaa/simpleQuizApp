@@ -44,16 +44,13 @@ export default function QuizActionFooter(props) {
 				}
 			</div>
 			<div className='quiz-question-submit-quiz submit-button'>
-				{
-					canSubmit ?
-						<Button
-							variant='contained'
-							color='secondary'
-							onClick={handleQuizSubmit}
-							className={classes.submitButton}>
-							Submit
-						</Button> : null
-				}
+				<Button
+					variant='contained'
+					color='secondary'
+					onClick={handleQuizSubmit}
+					className={classes.submitButton}>
+					{canSubmit ? 'Submit Answers' : 'Result'}
+				</Button>
 			</div>
 		</React.Fragment>
 	);

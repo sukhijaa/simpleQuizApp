@@ -12,7 +12,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import {getNameOfUser} from '../../reducers/StoreSelectors';
 import {updateName} from '../../actions/UserDetails.actions';
 import {APIEndpoints, HTTP} from '../../utility/HTTPRequests';
-import {resetQuestions} from "../../actions/QuizQuestions.actions";
+import {resetQuestions} from '../../actions/QuizQuestions.actions';
+import {startTheGame} from '../../actions/UIProperties.actions';
 
 @QuizAppWrapper
 @MaterialUIWithStylesHOC(successButtonStyles)
@@ -35,6 +36,7 @@ export default class Welcome extends React.Component {
     onQuizStart = () => {
     	HTTP.GET(APIEndpoints.GET_QUIZ_QUESTIONS).then(res => {
 		    this.props.dispatch(resetQuestions(res.data.results));
+		    this.props.dispatch(startTheGame());
 		    this.props.history.push('/quiz');
 		    this.props.history.goForward();
 	    });

@@ -1,0 +1,24 @@
+.quiz-result-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .quiz-result-congrats-message {
+	font-size: 40px;
+	font-weight: bold;
+	height: 50px;
+	margin: 20px 0;
+  }
+
+  .quiz-score-label {
+	font-size: 20px;
+	margin: 20px 0;
+  }
+
+  .quiz-score {
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 20px;
+  }
+}

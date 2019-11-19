@@ -24,7 +24,7 @@ export default class QuizSingleQuestion extends React.Component {
 		classes: PropTypes.object,
 		currentQuestion: PropTypes.number,
 		allQuestions: PropTypes.array,
-		userResponses: PropTypes.array,
+		userResponses: PropTypes.object,
 	};
 
 	static defaultProps = {

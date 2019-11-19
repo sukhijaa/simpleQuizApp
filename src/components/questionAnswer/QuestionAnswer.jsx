@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './QuestionAnswer.scss';
 import {CancelRounded, DoneOutlineRounded} from '@material-ui/icons';
-import {MaterialUIWithStylesHOC} from "../../utility/MaterialUIWithStylesHOC";
-import {answerSubmitIcon} from "../../utility/MaterialUIStyles";
+import {MaterialUIWithStylesHOC} from '../../utility/MaterialUIWithStylesHOC';
+import {answerSubmitIcon} from '../../utility/MaterialUIStyles';
 
 @MaterialUIWithStylesHOC(answerSubmitIcon)
 export default class QuestionAnswer extends React.Component {
@@ -38,7 +38,7 @@ export default class QuestionAnswer extends React.Component {
 
 	    const {
 		    questionStatement, answers, questionCount, correctAnswer,
-		    questionCategory, selectedOption, updateSelectedAnswwer, showResult, classes
+		    questionCategory, selectedOption, updateSelectedAnswwer, showResult, classes,
 	    } = this.props;
 
     	return (

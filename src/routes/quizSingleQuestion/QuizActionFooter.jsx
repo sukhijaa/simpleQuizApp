@@ -7,7 +7,7 @@ export default function QuizActionFooter(props) {
 
 	const {
 		currentQuestion, allQuestions, classes, moveToPreviousQuestion,
-		handleQuizRestart, handleQuizSubmit, moveToNextQuestion, canSubmit
+		handleQuizRestart, handleQuizSubmit, moveToNextQuestion, canSubmit,
 	} = props;
 
 	const isFirstQuestion = currentQuestion === 0;
@@ -31,7 +31,7 @@ export default function QuizActionFooter(props) {
 							color='secondary' aria-label='add'
 							className={classes.button}
 							onClick={moveToPreviousQuestion}>
-							{'Prev'}
+							Prev
 						</Fab>
 				}
 				{
@@ -39,7 +39,7 @@ export default function QuizActionFooter(props) {
 						<Fab color='secondary' aria-label='add'
 						     className={classes.button}
 						     onClick={moveToNextQuestion}>
-							{'Next'}
+							Next
 						</Fab>
 				}
 			</div>
@@ -67,5 +67,5 @@ QuizActionFooter.propTypes = {
 	moveToNextQuestion: PropTypes.func,
 	handleQuizSubmit: PropTypes.func,
 	handleQuizRestart: PropTypes.func,
-	canSubmit: PropTypes.bool
+	canSubmit: PropTypes.bool,
 };

@@ -30,7 +30,7 @@ export const questionChangeButtons = theme => ({
 	restartButton: {
 		margin: theme.spacing(1),
 		backgroundColor: 'red',
-	}
+	},
 });
 
 export const answerSubmitIcon = theme => ({
@@ -40,4 +40,4 @@ export const answerSubmitIcon = theme => ({
 	crossIcon: {
 		color: 'red',
 	},
-})
+});

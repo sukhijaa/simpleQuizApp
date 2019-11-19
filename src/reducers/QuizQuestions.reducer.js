@@ -1,5 +1,5 @@
 import {quizQuestionActionTypes} from '../actions/QuizQuestions.actions';
-import {uiPropertiesActionTypes} from "../actions/UIProperties.actions";
+import {uiPropertiesActionTypes} from '../actions/UIProperties.actions';
 
 const defaultProps = {
 	quizQuestions: [],

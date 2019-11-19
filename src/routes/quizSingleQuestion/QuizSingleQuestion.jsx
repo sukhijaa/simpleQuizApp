@@ -106,14 +106,14 @@ export default class QuizSingleQuestion extends React.Component {
 					    moveToNextQuestion={this.moveToNextQuestion}
 					    moveToPreviousQuestion={this.moveToPreviousQuestion}/>
 			    </div>
-			    <div className={'attempted-questions-count'}>
+			    <div className='attempted-questions-count'>
 				    <Slider
 					    value={selectedAnswers}
 					    max={10}
 					    aria-labelledby='discrete-slider-always'
 					    getAriaValueText={this.getValueText}
-					    className={classes}
-					    valueLabelDisplay={'auto'}/>
+					    marks={[{value: 0, label: '0'}, {value: 10, label: '10'}]}
+					    valueLabelDisplay='auto'/>
 				    <span>Attempted Questions Count</span>
 			    </div>
     		</div>

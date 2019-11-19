@@ -2,7 +2,7 @@ export const uiPropertiesActionTypes = {
 	START_THE_GAME: 'startGame',
 	UPDATE_CURRENT_QUESTION: 'currentQuestion',
 	END_THE_GAME: 'endTheGame',
-	RESET_THE_GAME: 'resetGame'
+	RESET_THE_GAME: 'resetGame',
 };
 
 export const startTheGame = () => ({
@@ -19,7 +19,7 @@ export const updateCurrentQuestion = (newQuestionIndex) => ({
 });
 
 export const resetTheGame = () => ({
-	type: uiPropertiesActionTypes.RESET_THE_GAME
+	type: uiPropertiesActionTypes.RESET_THE_GAME,
 });
 
 

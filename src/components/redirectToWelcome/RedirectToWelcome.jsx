@@ -13,7 +13,7 @@ export const RedirectManager = withRouter(({history}) => {
 
 	if (!hasGameStarted && (isQuestionPage || isResultPage)) {
 		return (
-			<Redirect to={'/'}/>
+			<Redirect to='/'/>
 		);
 	}
 

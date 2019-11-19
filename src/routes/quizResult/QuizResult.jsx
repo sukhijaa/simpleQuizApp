@@ -6,8 +6,8 @@ import {getNameOfUser, getQuizQuestions, getUserAnswers} from '../../reducers/St
 import './QuizResult.scss';
 import {MaterialUIWithStylesHOC} from '../../utility/MaterialUIWithStylesHOC';
 import {questionChangeButtons} from '../../utility/MaterialUIStyles';
-import Button from "@material-ui/core/Button";
-import {resetTheGame} from "../../actions/UIProperties.actions";
+import Button from '@material-ui/core/Button';
+import {resetTheGame} from '../../actions/UIProperties.actions';
 
 
 @QuizAppWrapper
@@ -19,7 +19,7 @@ import {resetTheGame} from "../../actions/UIProperties.actions";
 }))
 export default class QuizResult extends React.Component {
 	static propTypes = {
-		classes: PropTypes.oject,
+		classes: PropTypes.object,
 		userName: PropTypes.string,
 		userAnswers: PropTypes.object,
 		allQuestions: PropTypes.array,
@@ -57,7 +57,7 @@ export default class QuizResult extends React.Component {
 		this.props.history.goForward();
 	};
 
-    render() {
+	render() {
 	    const {userName, allQuestions, classes} = this.props;
 
 
@@ -91,5 +91,5 @@ export default class QuizResult extends React.Component {
     		</div>
     	);
 
-    }
+	}
 }

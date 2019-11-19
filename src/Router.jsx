@@ -16,7 +16,8 @@ export default class Router extends React.Component {
 						<Route path='/result' component={QuizResult}/>
 						<Route path='/quiz' component={QuizSingleQuestion}/>
 						<Route path='/welcome' component={Welcome}/>
-						<Route path='/' exact component={Welcome}/>
+						<Route path='/' exact
+						       component={Welcome}/>
 						<Route component={ErrorPage}/>
 					</Switch>
 				</BrowserRouter>

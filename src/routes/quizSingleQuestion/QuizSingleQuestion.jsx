@@ -9,12 +9,13 @@ import {
 	getCurrentQuestion,
 	getGameSubmissionStatus,
 	getQuizQuestions,
-	getUserAnswers
+	getUserAnswers,
 } from '../../reducers/StoreSelectors';
 import PropTypes from 'prop-types';
 import {endTheGame, resetTheGame, updateCurrentQuestion} from '../../actions/UIProperties.actions';
 import {updateAnswer} from '../../actions/QuizQuestions.actions';
 import QuizActionFooter from './QuizActionFooter';
+import Slider from '@material-ui/core/Slider';
 
 
 @QuizAppWrapper
@@ -23,7 +24,7 @@ import QuizActionFooter from './QuizActionFooter';
 	currentQuestion: getCurrentQuestion(store),
 	allQuestions: getQuizQuestions(store),
 	userResponses: getUserAnswers(store),
-	quizSubmitted: getGameSubmissionStatus(store)
+	quizSubmitted: getGameSubmissionStatus(store),
 }))
 export default class QuizSingleQuestion extends React.Component {
 	static propTypes = {
@@ -31,7 +32,7 @@ export default class QuizSingleQuestion extends React.Component {
 		currentQuestion: PropTypes.number,
 		allQuestions: PropTypes.array,
 		userResponses: PropTypes.object,
-		quizSubmitted: PropTypes.bool
+		quizSubmitted: PropTypes.bool,
 	};
 
 	static defaultProps = {
@@ -39,7 +40,7 @@ export default class QuizSingleQuestion extends React.Component {
 		currentQuestion: 0,
 		allQuestions: [],
 		userResponses: {},
-		quizSubmitted: false
+		quizSubmitted: false,
 	};
 
     state = {};
@@ -55,7 +56,10 @@ export default class QuizSingleQuestion extends React.Component {
 	};
 
 	updateUserResponse = (selectedIndex) => {
-		const {currentQuestion} = this.props;
+		const {currentQuestion, quizSubmitted} = this.props;
+		if (quizSubmitted) {
+			return;
+		}
 		this.props.dispatch(updateAnswer(currentQuestion, selectedIndex));
 	};
 
@@ -69,12 +73,16 @@ export default class QuizSingleQuestion extends React.Component {
 		this.props.dispatch(resetTheGame());
 		this.props.history.push('/');
 		this.props.history.goForward();
-	}
+	};
+
+	getValueText = (val) => `Attemped Questions: ${val}`;
 
 	render() {
 
 		const {classes, currentQuestion, allQuestions, userResponses, quizSubmitted} = this.props;
 	    const questionObj = allQuestions[currentQuestion] || {};
+
+		const selectedAnswers = Object.keys(userResponses).length;
 
     	return (
     		<div className='quiz-single-question'>
@@ -97,6 +105,16 @@ export default class QuizSingleQuestion extends React.Component {
 					    handleQuizSubmit={this.handleQuizSubmit}
 					    moveToNextQuestion={this.moveToNextQuestion}
 					    moveToPreviousQuestion={this.moveToPreviousQuestion}/>
+			    </div>
+			    <div className={'attempted-questions-count'}>
+				    <Slider
+					    value={selectedAnswers}
+					    max={10}
+					    aria-labelledby='discrete-slider-always'
+					    getAriaValueText={this.getValueText}
+					    className={classes}
+					    valueLabelDisplay={'auto'}/>
+				    <span>Attempted Questions Count</span>
 			    </div>
     		</div>
 

@@ -52,12 +52,8 @@
 	  }
 	}
 
-	.selected-option {
-	  box-shadow: 0 0 5px orange;
-
-	  &:hover {
-		box-shadow: 0 0 5px orange;
-	  }
+	.selected-option, .selected-option:hover {
+	  box-shadow: 0 0 10px chocolate;
 	}
   }
 }

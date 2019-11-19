@@ -51,16 +51,7 @@ Otherwise, in your browser, go to localhost:8000 and you shall see your Quiz App
 
 
 ```
-$ npm run eslint-fix -> To fix the auto-fixable errors
-```
-
-## Deployment
-
-To deploy latest UI changes onto server
-```
-$ npm run prod
-
-Refresh browser window after clearing the cache and you shall see your changes.
+$ npm run lint-js:fix -> To fix the auto-fixable errors
 ```
 
 ## About the Project
@@ -73,19 +64,19 @@ You can simply visit the homepage, enter your name and start playing
 
 
 ## About the Framework
-Framework is very modular designed keeping a huge level of customization in mind.
+Framework is very modular and is designed keeping a huge level of customization in mind.
 
 #### QuizAppWrapper HOC
-This is the first DOM element and hence aligns the playing area as the view
+This is the first DOM element and hence aligns the playing area as per the view area
 <br/>
 So responsiveness is achieved even without media queries.
 <br/>
-Also, for current scope, its a static HOC. We can make it dynamic by passing different paramters for different screens and hecne we can have a different theme for different routes just by making changes in 1 hOC
+Also, for current scope, its a static HOC. We can make it dynamic by passing different parameters for different screens and hence we can have a different theme for different routes just by making changes in 1 HOC
 
-#### MaterialUIStyles HOC for Metrial UI Integration
-This HOC actually injects classes object into the WrappedComponent and hecne Material UI components can be conigured and styled using the function that is passed down to this HOC
+#### MaterialUIStyles HOC for Material UI Integration
+This HOC actually injects classes object into the WrappedComponent and hence Material UI components can be configured and styled using the function that is passed down to this HOC
 <br/>
-This again modularises the code alot since now we can easily bifurcate styles with code
+This again modularizes the code alot since now we can easily bifurcate styles with code
  
 
 Other than this, App makes aggressive use of Functional Components.
